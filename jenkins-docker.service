@@ -1,0 +1,31 @@
+[Unit]
+Description=Jenkins Server
+Documentation=https://jenkins.io/doc/
+After=docker.service
+Requires=docker.service
+
+[Service]
+Type=simple
+User=jenkins
+Group=jenkins
+TimeoutStartSec=0
+Restart=on-failure
+RestartSec=30s
+# ExecStartPre=-/usr/bin/docker kill jenkins-server
+# ExecStartPre=-/usr/bin/docker rm jenkins-server
+# ExecStartPre=/usr/bin/docker pull jenkins/jenkins:lts
+ExecStart=/usr/bin/docker run -d \
+          --name jenkins-server \
+	  --hostname bhima-test \
+          --publish 8080:8080 \
+          --publish 50000:50000 \
+          --volume jenkins_home:/var/jenkins_home \
+          bhima/jenkins:v1
+SyslogIdentifier=jenkins
+ExecStop=/usr/bin/docker stop jenkins-server
+
+[Install]
+WantedBy=multi-user.target
+
+
+# 	  --restart=unless-stopped
