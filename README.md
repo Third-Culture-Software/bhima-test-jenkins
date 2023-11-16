@@ -1,2 +1,2 @@
 # bhima-test-jenkins
-Jenkins files for the BHIMA end-to-end test server
+Jenkins and related Docker files for the BHIMA end-to-end test server
