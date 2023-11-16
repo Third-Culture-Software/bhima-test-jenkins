@@ -1,0 +1,3 @@
+#!/bin/bash
+
+sudo docker build -f /home/bhima/jenkins/Dockerfile -t bhima/jenkins:v1 /home/bhima/jenkins/build
