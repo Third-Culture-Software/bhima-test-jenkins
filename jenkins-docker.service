@@ -4,6 +4,8 @@ Documentation=https://jenkins.io/doc/
 After=docker.service
 Requires=docker.service
 
+# Based on: https://computingforgeeks.com/running-jenkins-server-in-docker-container-systemd
+
 [Service]
 Type=simple
 User=jenkins
