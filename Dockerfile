@@ -4,6 +4,6 @@ USER root
 
 # Install stuff
 RUN apt update && apt upgrade -y
-RUN apt install -y sudo openssh-server git
+RUN apt install -y sudo openssh-server git rsync
 
 USER jenkins
