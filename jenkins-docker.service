@@ -4,8 +4,6 @@ Documentation=https://jenkins.io/doc/
 After=docker.service
 Requires=docker.service
 
-# Based on: https://computingforgeeks.com/running-jenkins-server-in-docker-container-systemd
-
 [Service]
 Type=simple
 User=jenkins
@@ -21,7 +19,7 @@ ExecStart=/usr/bin/docker run \
 	  --hostname bhima-test \
           --publish 8080:8080 \
           --publish 50000:50000 \
-          --volume jenkins_home:/var/jenkins_home \
+          --volume /var/jenkins:/var/jenkins_home \
           bhima/jenkins:v1
 SyslogIdentifier=jenkins
 ExecStop=/usr/bin/docker stop jenkins-server
