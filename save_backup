@@ -1,0 +1,9 @@
+#!/bin/bash
+
+echo "Backing up Jenkins server data to /home/bhima/jenkins/backups"
+echo "This will take about 30 seconds."
+
+DATE=$(date '+%Y-%m-%d')
+
+(cd /var; tar czf /home/bhima/jenkins/backups/$DATE-jenkins-backup.tar.gz jenkins)
+
