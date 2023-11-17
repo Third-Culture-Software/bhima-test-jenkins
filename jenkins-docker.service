@@ -11,10 +11,10 @@ Group=jenkins
 TimeoutStartSec=0
 Restart=on-failure
 RestartSec=30s
-# ExecStartPre=-/usr/bin/docker kill jenkins-server
-# ExecStartPre=-/usr/bin/docker rm jenkins-server
+ExecStartPre=-/usr/bin/docker kill jenkins-server
+ExecStartPre=-/usr/bin/docker rm jenkins-server
 # ExecStartPre=/usr/bin/docker pull jenkins/jenkins:lts
-ExecStart=/usr/bin/docker run -d \
+ExecStart=/usr/bin/docker run \
           --name jenkins-server \
 	  --hostname bhima-test \
           --publish 8080:8080 \
@@ -26,6 +26,3 @@ ExecStop=/usr/bin/docker stop jenkins-server
 
 [Install]
 WantedBy=multi-user.target
-
-
-# 	  --restart=unless-stopped
