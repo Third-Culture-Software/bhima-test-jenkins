@@ -18,7 +18,7 @@ pipeline {
 
   post {
     always { 
-      junit '/home/jenkins/builds/Bhima/results/*.xml'
+      junit '''/home/jenkins/builds/Bhima/results/*.xml'''
     }
   }
 }
