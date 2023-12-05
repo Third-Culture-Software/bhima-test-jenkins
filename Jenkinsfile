@@ -11,8 +11,10 @@ pipeline {
         }
 
         stage('Execute remote script') {
+          agent any
           steps {
-            sh '''test
+            sh '''/home/bhima/test
+
 '''
           }
         }
