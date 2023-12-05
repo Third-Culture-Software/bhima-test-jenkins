@@ -13,8 +13,7 @@ pipeline {
         stage('Execute remote script') {
           agent any
           steps {
-            sh '''/home/jenkins/run_e23_tests
-
+            sh '''/home/jenkins/run_e2e_tests
 
 '''
           }
