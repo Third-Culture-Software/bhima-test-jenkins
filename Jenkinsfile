@@ -19,7 +19,7 @@ pipeline {
   post {
     always { 
       archiveArtifacts artifacts: 'builds/Bhima/results.zip', fingerprint: true
-      junit 'builds/Bhima/results/*.xml'
+      junit '../builds/Bhima/results/*.xml'
     }
   }
 }
