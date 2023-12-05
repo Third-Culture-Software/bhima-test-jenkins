@@ -1,5 +1,11 @@
 pipeline {
   agent any
+
+  triggers {
+    cron '''H * * * *
+  '''
+  }
+
   stages {
     stage('Start E2E Tests') {
       agent any
