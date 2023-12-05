@@ -13,7 +13,8 @@ pipeline {
         stage('Execute remote script') {
           agent any
           steps {
-            sh '''/home/bhima/test
+            sh '''/home/jenkins/run_e23_tests
+
 
 '''
           }
