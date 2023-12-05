@@ -10,7 +10,8 @@ pipeline {
 
     stage('Run E2E test') {
       steps {
-        sh '''/home/jenkins/run_e2e_tests
+        sh '''/home/jenkins/builds/run_tests
+
 '''
       }
     }
