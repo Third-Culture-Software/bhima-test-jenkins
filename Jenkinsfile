@@ -15,4 +15,10 @@ pipeline {
     }
 
   }
+
+  post {
+    always { 
+      junit 'builds/results/*.xml
+    }
+  }
 }
