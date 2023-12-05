@@ -10,9 +10,7 @@ pipeline {
 
     stage('Run remote E2E tests') {
       steps {
-        sh '''/home/jenkins/builds/run_tests
-
-'''
+        sh '''/home/jenkins/builds/run_tests'''
       }
     }
 
