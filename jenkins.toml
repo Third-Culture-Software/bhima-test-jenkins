@@ -1,0 +1,7 @@
+# client.toml
+[client]
+remote_addr = "gateway.thirdculturesoftware.com:2334" # The address of the server. The port must be the same with the port in `server.bind_addr`
+
+[client.services.my_nas_ssh]
+token = "rhu0haz5upn1dcz_ZKP" # Must be the same with the server to pass the validation
+local_addr = "127.0.0.1:8080" # The address of the service that needs to be forwarded
