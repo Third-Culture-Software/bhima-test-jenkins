@@ -29,7 +29,7 @@ pipeline {
     }
 
     failure {  
-      mail to: 'jmcameron@gmail.com', 
+      mail to: 'bhima@jmcameron.net', 
       subject: 'Failing BHIMA End-to-end Tests: ${currentBuild.fullDisplayName}',
       from: 'noreply+jenkins@bhima-test.local', 
       body: "Details: ${env.JOB_NAME} Build Number: ${env.BUILD_NUMBER} Build: ${env.BUILD_URL} Console Output: ${env.BUILD_URL}/console"
