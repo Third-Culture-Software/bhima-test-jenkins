@@ -29,14 +29,14 @@ pipeline {
     }
 
     changed {
-      mail to: 'bhima@jmcameron.net', 
+      mail to: 'jmcameron@gmail.com', 
       subject: 'BHIMA End-to-end Tests Regression: ${currentBuild.fullDisplayName}',
       from: 'bhima@jmcameron.net', 
       body: "Details: ${env.JOB_NAME} Build Number: ${env.BUILD_NUMBER} Build: ${env.BUILD_URL} Console Output: ${env.BUILD_URL}/console"
     }
 
     failure {  
-      mail to: 'bhima@jmcameron.net', 
+      mail to: 'jmcameron@gmail.com', 
       subject: 'BHIMA End-to-end Tests Failure: ${currentBuild.fullDisplayName}',
       from: 'bhima@jmcameron.net', 
       body: "Details: ${env.JOB_NAME} Build Number: ${env.BUILD_NUMBER} Build: ${env.BUILD_URL} Console Output: ${env.BUILD_URL}/console"
