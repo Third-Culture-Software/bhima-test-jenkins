@@ -30,16 +30,16 @@ pipeline {
 
     changed {
       mail to: 'jmcameron@gmail.com', 
-      subject: 'BHIMA End-to-end Tests Regression: ${currentBuild.fullDisplayName}',
+      subject: 'BHIMA Tests Regression',
       from: 'bhima@jmcameron.net', 
-      body: "Details: ${env.JOB_NAME} Build Number: ${env.BUILD_NUMBER} Build: ${env.BUILD_URL} Console Output: ${env.BUILD_URL}/console"
+      body: "Details: ${env.JOB_NAME}, Build Number: ${env.BUILD_NUMBER}, Build: ${env.BUILD_URL} \nConsole Output: ${env.BUILD_URL}console"
     }
 
     failure {  
       mail to: 'jmcameron@gmail.com', 
-      subject: 'BHIMA End-to-end Tests Failure: ${currentBuild.fullDisplayName}',
+      subject: 'BHIMA Tests Failure',
       from: 'bhima@jmcameron.net', 
-      body: "Details: ${env.JOB_NAME} Build Number: ${env.BUILD_NUMBER} Build: ${env.BUILD_URL} Console Output: ${env.BUILD_URL}/console"
+      body: "Details: ${env.JOB_NAME}, Build Number: ${env.BUILD_NUMBER}, Build: ${env.BUILD_URL} \nConsole Output: ${env.BUILD_URL}console"
     }  
 
   }
