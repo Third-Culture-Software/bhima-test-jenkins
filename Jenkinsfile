@@ -38,14 +38,14 @@ pipeline {
       mail to: 'jmcameron@gmail.com', 
       subject: 'BHIMA Tests Regression',
       from: 'bhima@jmcameron.net', 
-      body: "Details: ${env.JOB_NAME}, Build Number: ${env.BUILD_NUMBER}, \nBuild: ${env.BUILD_URL} \nConsole Output: ${env.BUILD_URL}console \n${env}"
+      body: "Details: ${env.JOB_NAME}, Build Number: ${env.BUILD_NUMBER}, \nBuild: ${env.BUILD_URL} \nConsole Output: ${env.BUILD_URL}console \nChanges: ${RUN_CHANGES_DISPLAY}""
     }
 
     failure {  
       mail to: 'jmcameron@gmail.com', 
       subject: 'BHIMA Tests Failure',
       from: 'bhima@jmcameron.net', 
-      body: "Details: ${env.JOB_NAME}, Build Number: ${env.BUILD_NUMBER}, \nBuild: ${env.BUILD_URL} \nConsole Output: ${env.BUILD_URL}console \n${env}"
+      body: "Details: ${env.JOB_NAME}, Build Number: ${env.BUILD_NUMBER}, \nBuild: ${env.BUILD_URL} \nConsole Output: ${env.BUILD_URL}console"
     }  
 
   }
