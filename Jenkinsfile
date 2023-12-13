@@ -1,20 +1,19 @@
 pipeline {
   agent any
   stages {
-    stage('Start Tests') {
-      agent any
+    stage('Start tests') {
       steps {
         echo 'Starting'
       }
     }
 
-    stage('Run remote E2E tests') {
+    stage('Run remote Bhima tests') {
       steps {
         sh '/home/jenkins/builds/run_tests'
       }
     }
 
-    stage('Print environment') {
+    stage('Print remote environment') {
       steps {
         sh '/usr/bin/printenv | sort'
       }
@@ -28,7 +27,7 @@ pipeline {
     }
 
     changed {
-      mail(to: 'jmcameron@gmail.com', subject: 'BHIMA Tests Regression', from: 'bhima@jmcameron.net', body: "Details: ${env.JOB_NAME}, Build Number: ${env.BUILD_NUMBER}, \nBuild: ${env.BUILD_URL} \nConsole Output: ${env.BUILD_URL}console \nChanges: ${env.RUN_CHANGES_DISPLAY}")
+      mail(to: 'jmcameron@gmail.com', subject: 'BHIMA Tests Regression', from: 'bhima@jmcameron.net', body: "Details: ${env.JOB_NAME}, Build Number: ${env.BUILD_NUMBER}, \nBuild: ${env.BUILD_URL} \nConsole Output: ${env.BUILD_URL}console \nChanges: ${env.RUN_CHANGES_DISPLAY_URL}")
     }
 
     failure {
