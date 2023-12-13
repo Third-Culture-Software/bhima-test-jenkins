@@ -20,6 +20,12 @@ pipeline {
       }
     }
 
+    stage('Print environment') {
+      steps {
+        sh '''/usr/bin/printenv | sort'''
+      }
+    }
+
   }
 
   post {
