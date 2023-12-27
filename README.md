@@ -11,20 +11,29 @@ Note that this test server  runs Jenkins in a docker container, so it requires D
    - See https://docs.docker.com/engine/install/ubuntu/
    - The 'install using the apt repository' option seems to work smoothly
 3. Create a 'bhima' user (and enable sudo access for this user)
-   - `sudo adduser bhima --uid 1000 --gid 100`
+   - `sudo adduser --uid 1000 --gid 1000 bhima`
    - `sudo echo "bhima ALL=(ALL) ALL" | /etc/sudoers.d/bhima`
-4. Log in as `bhima` and clone this repo
+4. Create a 'jenkins' user for the systemd startup
+   - `useradd --shell /sbin/nlogin jenkins`
+   - `usermod -a -G docker jenkins`
+5. Log in as `bhima` and clone this repo
    - `git clone https://github.com/IMA-WorldHealth/bhima-test-jenkins.git jenkins`
-5. Create a build directory
+6. Create a build directory
    - `cd jenkins`
    - `mkdir build`
-6.  Verify that the Jenkins WAR file version is up to date in the Dockerfile
+7.  Verify that the Jenkins WAR file version is up to date in the Dockerfile
     - check https://www.jenkins.io/download/ for the latest WAR file version
     - Verify that this is the version in the Dockerfile (update locally if necessary)
-7.  Create the docker image
+8.  Create the docker image
     - `./build_image`  (enter password to use sudo; this should take a few minutes)
-8. Install jenkins/docker service (as root)
+9. Install jenkins/docker service (as root)
     - copy jenkins-docker.service to /etc/systemd/system/
     - `systemctl daemon-reload`
     - `systemctl enable jenkns-docker.service`
     - `systemctl start jenkins-docker.service`
+10.  Verify that Jenkins is running and start the  initial startup process
+    - Check for good start:
+        - `systemctl status jenkins-docker.service`
+    - Log into the local jenkins website:  http://<hostname>:8080
+      (where 'hostname' could be 'localhost' or the hostname of the Jenkins server
+
