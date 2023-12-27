@@ -27,7 +27,7 @@ Note that this test server  runs Jenkins in a docker container, so it requires D
 8.  Create the docker image
     - `./build_image`  (enter password to use sudo; this should take a few minutes)
 9. Install jenkins/docker service (as root)
-    - copy jenkins-docker.service to /etc/systemd/system/
+    - copy 'jenkins-docker.service' to /etc/systemd/system/
     - `systemctl daemon-reload`
     - `systemctl enable jenkns-docker.service`
     - `systemctl start jenkins-docker.service`
