@@ -14,5 +14,5 @@ Note that this test server  runs Jenkins in a docker container, so it requires D
    - `sudo adduser bhima`
    - `sudo echo "bhima ALL=(ALL) ALL" | /etc/sudoers.d/bhima`
 4. Log in as `bhima` and clone this repo
-   - git clone 
+   - `git clone https://github.com/IMA-WorldHealth/bhima-test-jenkins.git jenkins`
 5. 
