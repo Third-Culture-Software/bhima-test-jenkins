@@ -22,6 +22,10 @@ Note that this test server  runs Jenkins in a docker container, so it requires D
     - check https://www.jenkins.io/download/ for the latest WAR file version
     - Verify that this is the version in the Dockerfile (update locally if necessary)
 7.  Create the docker image
-    - `./build_image`  (enter password to use sudo)
-8. Install jenkins/docker service
-    - ? 
+    - `./build_image`  (enter password to use sudo; this should take a few minutes)
+8. Create the local jenkins account (to match the jenkins account in the docker image
+    - ?
+8. Install jenkins/docker service (as root)
+    - copy jenkins-docker.service to /etc/systemd/system/
+    - `systemctl daemon-reload`
+    - 
