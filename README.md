@@ -11,7 +11,7 @@ Note that this test server  runs Jenkins in a docker container, so it requires D
    - See https://docs.docker.com/engine/install/ubuntu/
    - The 'install using the apt repository' option seems to work smoothly
 3. Create a 'bhima' user (and enable sudo access for this user)
-   - `sudo adduser bhima`
+   - `sudo adduser bhima --uid 1000 --gid 100`
    - `sudo echo "bhima ALL=(ALL) ALL" | /etc/sudoers.d/bhima`
 4. Log in as `bhima` and clone this repo
    - `git clone https://github.com/IMA-WorldHealth/bhima-test-jenkins.git jenkins`
@@ -23,10 +23,8 @@ Note that this test server  runs Jenkins in a docker container, so it requires D
     - Verify that this is the version in the Dockerfile (update locally if necessary)
 7.  Create the docker image
     - `./build_image`  (enter password to use sudo; this should take a few minutes)
-8. Create the local jenkins account (to match the jenkins account in the docker image
-    - `useradd --uid 1000 --gid 1000 --shell /sbin/nologin jenkins`
-    - `usermod -a -G docker jenkins`
 8. Install jenkins/docker service (as root)
     - copy jenkins-docker.service to /etc/systemd/system/
     - `systemctl daemon-reload`
-    - 
+    - `systemctl enable jenkns-docker.service`
+    - `systemctl start jenkins-docker.service`
