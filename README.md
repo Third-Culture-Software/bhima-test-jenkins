@@ -33,7 +33,7 @@ Note that this test server  runs Jenkins in a docker container, so it requires D
     - `systemctl start jenkins-docker.service`
 10.  Verify that Jenkins is running and start the  initial startup process
     - Check for good start:
-        - `systemctl status jenkins-docker.service`
+       `systemctl status jenkins-docker.service`
     - Log into the local jenkins website:  http://<hostname>:8080
-      (where 'hostname' could be 'localhost' or the hostname of the Jenkins server
+        (where 'hostname' could be 'localhost' or the hostname of the Jenkins server
 
