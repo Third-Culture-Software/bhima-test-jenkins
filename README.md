@@ -24,7 +24,7 @@ Note that this test server  runs Jenkins in a docker container, so it requires D
 7.  Create the docker image
     - `./build_image`  (enter password to use sudo; this should take a few minutes)
 8. Create the local jenkins account (to match the jenkins account in the docker image
-    - `useradd --uid 1000 --gid --shell /sbin/nologin jenkins`
+    - `useradd --uid 1000 --gid 1000 --shell /sbin/nologin jenkins`
     - `usermod -a -G docker jenkins`
 8. Install jenkins/docker service (as root)
     - copy jenkins-docker.service to /etc/systemd/system/
