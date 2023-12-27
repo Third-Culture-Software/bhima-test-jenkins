@@ -23,4 +23,5 @@ Note that this test server  runs Jenkins in a docker container, so it requires D
    - Verify that this is the version in the Dockerfile (update locally if necessary)
 7.  Create the docker image
    - `./build_image`  (enter password to use sudo)
- 
+8. Install jenkins/docker service
+   - ? 
