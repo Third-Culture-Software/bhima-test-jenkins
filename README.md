@@ -9,4 +9,6 @@ Note that this test server  runs Jenkins in a docker container, so it requires D
    `sudo apt update; sudo apt upgrade -y`
 2. Install Docker
    - See https://docs.docker.com/engine/install/ubuntu/
-3. ?
+   - The 'install using the apt repository' option seems to work smoothly
+3. Download the  Jenkins docker image
+4. 
