@@ -26,13 +26,15 @@ Note that this test server  runs Jenkins in a docker container, so it requires D
     - Verify that this is the version in the Dockerfile (update locally if necessary)
 8.  Create the docker image
     - `./build_image`  (enter password to use sudo; this should take a few minutes)
-9. Install jenkins/docker service (as root)
+9. Create a local directory for a Docker volume to store the configuration
+    - `mkdir /var/jenkins`
+    - `chown -R bhima.bhima /var/jenkins`
+10. Install jenkins/docker service (as root)
     - copy 'jenkins-docker.service' to /etc/systemd/system/
     - `systemctl daemon-reload`
     - `systemctl enable jenkns-docker.service`
     - `systemctl start jenkins-docker.service`
-10.  Verify that Jenkins is running and start the  initial startup process
+11.  Verify that Jenkins is running and start the  initial startup process
     - Check for good start:  `systemctl status jenkins-docker.service`
     - Log into the local jenkins website:  http://<hostname>:8080
         (where 'hostname' could be 'localhost' or the hostname of the Jenkins server
-
