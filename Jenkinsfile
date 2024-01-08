@@ -8,9 +8,6 @@ pipeline {
     }
 
     stage('Run remote Bhima tests') {
-      environment {
-        BRANCH = 'test'
-      }
       steps {
         sh '/home/jenkins/builds/run_tests'
       }
