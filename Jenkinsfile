@@ -22,7 +22,7 @@ pipeline {
   }
   post {
     always {
-      archiveArtifacts(artifacts: 'results.zip, results/summary.txt', fingerprint: true)
+      archiveArtifacts(artifacts: 'results.zip, results/summary.txt, results/environment.txt', fingerprint: true)
       junit(skipPublishingChecks: true, testResults: 'results/*.xml')
     }
 
