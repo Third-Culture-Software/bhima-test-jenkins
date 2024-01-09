@@ -13,12 +13,6 @@ pipeline {
       }
     }
 
-    stage('Print remote environment') {
-      steps {
-        sh '/usr/bin/printenv | sort'
-      }
-    }
-
   }
   post {
     always {
