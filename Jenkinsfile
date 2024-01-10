@@ -21,11 +21,16 @@ pipeline {
     }
 
     changed {
-      mail(to: 'jmcameron@gmail.com', subject: 'BHIMA Tests Regression', from: 'bhima@jmcameron.net', body: "Details: ${env.JOB_NAME}, Build Number: ${env.BUILD_NUMBER}, \nBuild: ${env.BUILD_URL} \nConsole Output: ${env.BUILD_URL}console \nChanges: ${env.RUN_CHANGES_DISPLAY_URL}")
+      mail(to: 'jmcameron@gmail.com',
+      subject: 'BHIMA Tests Regression',
+         from: 'bhima@jmcameron.net',
+	 body: "Details: ${env.JOB_NAME}, Build Number: ${env.BUILD_NUMBER}, \nBuild: ${env.BUILD_URL} \nConsole Output: ${env.BUILD_URL}console \nChanges: ${env.RUN_CHANGES_DISPLAY_URL}")
     }
 
     failure {
-      mail(to: 'jmcameron@gmail.com', subject: 'BHIMA Tests Failure', from: 'bhima@jmcameron.net', body: "Details: ${env.JOB_NAME}, Build Number: ${env.BUILD_NUMBER}, \nBuild: ${env.BUILD_URL} \nConsole Output: ${env.BUILD_URL}console")
+      mail(to: 'jmcameron@gmail.com',
+      subject: 'BHIMA Tests Failure',
+         from: 'bhima@jmcameron.net', body: "Details: ${env.JOB_NAME}, Build Number: ${env.BUILD_NUMBER}, \nBuild: ${env.BUILD_URL} \nConsole Output: ${env.BUILD_URL}console")
     }
 
   }
