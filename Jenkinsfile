@@ -28,7 +28,7 @@ pipeline {
     }
 
     failure {
-      mail(to: 'jmcameron@gmail.com BMbayo@imaworldhealth.org',
+      mail(to: 'jmcameron@gmail.com,BMbayo@imaworldhealth.org',
       subject: 'BHIMA Tests Failure',
          from: 'bhima@jmcameron.net', body: "Details: ${env.JOB_NAME}, Build Number: ${env.BUILD_NUMBER}, \nBuild: ${env.BUILD_URL} \nConsole Output: ${env.BUILD_URL}console")
     }
