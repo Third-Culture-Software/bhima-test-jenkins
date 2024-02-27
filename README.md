@@ -43,6 +43,8 @@ Note that this test server  runs Jenkins in a docker container, so it requires D
 12. Update all Jenkins plugins (and restart Jenkins)
 13. Install Jenkins 'Blue Ocean' plugin
 14. Set up the Jenkins build agents.   See https://github.com/IMA-WorldHealth/bhima-test-e2e for details.
+    - Disable build agents on the Jenkins server
+       - Set `Dashboard > Manage Jenkins > System > System > # of executors` to 0 (and [Save])
 15. Set up the 'Run BHIMA tests' pipeline with Blue Ocean (with button on the main left menu bar).
     - See [Tutorial with Blue Ocean](https://www.youtube.com/watch?v=f4idgaq2VqA)
     - Choose `GitHub` project
