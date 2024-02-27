@@ -5,6 +5,8 @@ These directions assume Ubuntu LTS, but should be easily adapted to any Debian-b
 
 Note that this test server  runs Jenkins in a docker container, so it requires Docker.
 
+## Installation
+
 1. Update your installation
    `sudo apt update; sudo apt upgrade -y`
 2. Install Docker
@@ -56,3 +58,24 @@ Note that this test server  runs Jenkins in a docker container, so it requires D
 16. Once build agentws are available, re-enable the pipleline and click on the "Build Now" button.  
     You should start seeing the run in progress on the job page
     (eg, http://<jenkins-server>/job/bhima-test-jenkins/job/main/).
+
+## Update the Jenkins WAR file
+At some point, when you access the Jenkins web site, you may notice that Jenkins complains 
+that the version of Jenkins is out of date.  To update Jenkins, follow this procedure:
+1. Note the new version of Jenkins that the website recommends.
+2. Log into the BHIMA jenkins server (via ssh).
+3. Go to the Jenkins build directory (containing this file) on the server with `cd`
+4. Edit the `Dockerfile`, replace the old Jenkins.  Eg, update the version number
+   in this line:
+
+    `RUN wget http://updates.jenkins-ci.org/download/war/<new-version-number>/jenkins.war`
+5. Run: `./build_image`  (it will probably ask for your `sudo` password)
+6. Once it completes rebuilding the Docker image with the updated Jenkins WAR file, restart
+   the jenkins docker image.  It would be best to wait until the current build is 
+   complete (eg, check the website or wait until 45 minutes after the hour).
+
+    `sudo systemctl restart jenkins-docker.service`
+
+   This will take a few moments to complete.
+7. Verify that Jenkins was updated:  Refresh your Jenkins web session and verify that the 
+   warning message is gone.
