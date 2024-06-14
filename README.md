@@ -29,6 +29,8 @@ Note that this test server  runs Jenkins in a docker container, so it requires D
       see section below for update process).
 8.  Create the docker image
     - `./build_image`  (enter password to use sudo; this should take a few minutes)
+    - NOTE: you may need to make a copy of this build script with updated paths
+      for your installation.
 9. Create a local directory for a Docker volume to store the configuration
     - `mkdir /var/jenkins`
     - `chown -R bhima.bhima /var/jenkins`
@@ -65,15 +67,16 @@ Note that this test server  runs Jenkins in a docker container, so it requires D
 ## Update the Jenkins WAR file
 At some point, when you access the Jenkins web site, you may notice that Jenkins complains 
 that the version of Jenkins is out of date.  To update Jenkins, follow this procedure:
-1. Note the new version of Jenkins that the website recommends.
-2. Log into the BHIMA jenkins server (via ssh).
-3. Go to the Jenkins build directory (containing this file) on the server with `cd`
-4. Edit the `Dockerfile`, replace the old Jenkins.  Eg, update the version number
-   in this line:
+1. Log into the BHIMA jenkins server (via ssh).
+2. Go to the Jenkins build directory (containing this file) on the server with `cd`
+3. Run: `./build_image`  (it will probably ask for your `sudo` password)
+   - Note: this will update the Jenkins Docker image with the latest version of the 
+           Jenkins WAR file.  If you want to run some other version, edit the 'Dockerfile'
+           and comment out the 'RUN wget' line with 'latest' in it and uncomment the 
+           previous RUN wget' line and insert the desired Jenkins WAR version number.
+           Then run 'build_image'.
 
-    `RUN wget http://updates.jenkins-ci.org/download/war/<new-version-number>/jenkins.war`
-5. Run: `./build_image`  (it will probably ask for your `sudo` password)
-6. Once it completes rebuilding the Docker image with the updated Jenkins WAR file, restart
+4. Once it completes rebuilding the Docker image with the updated Jenkins WAR file, restart
    the jenkins docker image.  It would be best to wait until the current build is 
    complete (eg, check the website or wait until 45 minutes after the hour).
 
