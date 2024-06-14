@@ -25,7 +25,8 @@ Note that this test server  runs Jenkins in a docker container, so it requires D
    - `mkdir build`
 7.  Verify that the Jenkins WAR file version is up to date in the Dockerfile
     - check https://www.jenkins.io/download/ for the latest WAR file version
-    - Verify that this is the version in the Dockerfile (update locally if necessary)
+    - Verify that this is the version in the Dockerfile (update locally if necessary; 
+      see section below for update process).
 8.  Create the docker image
     - `./build_image`  (enter password to use sudo; this should take a few minutes)
 9. Create a local directory for a Docker volume to store the configuration
