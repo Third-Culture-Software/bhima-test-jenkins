@@ -1,0 +1,38 @@
+# Notes for getting SSL working with Jenkins running in a docker container
+#
+# Replace <cert>.* with your certificate files, as appropriate)
+#
+# Note that <cert> will usually be for an intermediate/server certificate.
+# it should not be for a root Certificate authority!
+
+# Install Java certificates tools
+apt install ca-certificates-java
+
+# Convert cert + key to <cert>.pfx file (used password 'jenkins')
+openssl pkcs12 -in <cert>.pem -inkey <cert>.key -export -out <cert>.pfx
+
+# Convert <cert>.pfx to Jenkins keystore format *.jks 
+# NOTE: used password 'jenkins' for both the *.pfx password and for the *.jks password.
+keytool -importkeystore -srckeystore <cert>.pfx -srcstoretype pkcs12 -destkeystore jenkins.jks -deststoretype JKS
+
+# Needed Jenkins options for https/SSL access:
+JENKINS_OPTS: --httpPort=-1 --httpsPort=443 --httpsKeyStore=/var/lib/jenkins/jenkins.jks --httpsKeyStorePassword=password
+
+# NOTE:  Omit the '--httpPort=-1' option if you still want to be able to access the jenkins server via http.
+#        This may be necessary when using a reverse proxy.
+#        The example below exposes both http and https:
+
+# For example:
+/usr/bin/docker run \
+   --name jenkins-server \
+   --hostname bhima-test \
+   --volume /var/jenkins:/var/jenkins_home \
+   --publish 443:8443 \
+   --publish 8080:8080 \
+   --publish 50000:50000 \
+   bhima/jenkins:v1 \
+   --httpsPort=8443 --httpsKeyStore=/var/jenkins_home/jenkins.jks --httpsKeyStorePassword=jenkins
+
+# REFERENCES
+https://stackoverflow.com/questions/29755014/setup-secured-jenkins-master-with-docker
+https://wiki.jenkins.io/JENKINS/135468777.html
