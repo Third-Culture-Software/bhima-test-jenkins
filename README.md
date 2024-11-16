@@ -19,7 +19,7 @@ Note that this test server  runs Jenkins in a docker container, so it requires D
    - `useradd --shell /sbin/nlogin jenkins`
    - `usermod -a -G docker jenkins`
 5. Log in as `bhima` and clone this repo
-   - `git clone https://github.com/IMA-WorldHealth/bhima-test-jenkins.git jenkins`
+   - `git clone https://github.com/Third-Culture-Software/bhima-test-jenkins.git jenkins`
 6. Create a build directory
    - `cd jenkins`
    - `mkdir build`
@@ -45,7 +45,7 @@ Note that this test server  runs Jenkins in a docker container, so it requires D
      - Start the Jenkins configuration process in the browser.
 12. Update all Jenkins plugins (and restart Jenkins)
 13. Install Jenkins 'Blue Ocean' plugin
-14. Set up the Jenkins build agents.   See https://github.com/IMA-WorldHealth/bhima-test-e2e for details.
+14. Set up the Jenkins build agents.   See https://github.com/Third-Culture-Software/bhima-test-e2e for details.
     - Disable build agents on the Jenkins server
        - Set `Dashboard > Manage Jenkins > System > System > # of executors` to 0 (and [Save])
 15. Set up the 'Run BHIMA tests' pipeline with Blue Ocean (with button on the main left menu bar).
@@ -53,7 +53,7 @@ Note that this test server  runs Jenkins in a docker container, so it requires D
     - Choose `GitHub` project
     - When prompted, create your own Github token and insert it.
       Note that is this will usually be for your own Github account that has necessary rights to the BHIMA repository.
-    - Select the 'IMA-WorldHealth' organization
+    - Select the 'Third-Culture-Software' organization
     - Select the 'bhima-test-jenkins' repository
     - Confirm to create the pipeline.  Note that this will run the pipeline immediately.
     - Exit Blue Ocean to get to the "Classic" view.
