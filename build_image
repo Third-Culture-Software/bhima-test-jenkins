@@ -1,3 +1,6 @@
 #!/bin/bash
 
-sudo docker build -f /home/bhima/jenkins/Dockerfile -t bhima/jenkins:v1 /home/bhima/jenkins/build
+# Get the latest version of the Jenkins WAR file
+VNUM=`/usr/bin/curl -s https://updates.jenkins.io/download/war/ | /usr/bin/grep 'download/war' | /usr/bin/head  -1 | /usr/bin/egrep -o '[0-9.]+' | /usr/bin/head -1`
+
+sudo docker build --no-cache -f /home/bhima/jenkins/Dockerfile -t bhima/jenkins:v1 --build-arg vnum=$VNUM /home/bhima/jenkins/build
