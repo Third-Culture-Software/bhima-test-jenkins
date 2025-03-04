@@ -74,10 +74,7 @@ that the version of Jenkins is out of date.  To update Jenkins, follow this proc
            Jenkins WAR file.  If you want to run some other version, edit the 'Dockerfile'
            and comment out the 'RUN wget' line with 'latest' in it and uncomment the 
            previous RUN wget' line and insert the desired Jenkins WAR version number.
-           Then run 'build_image'.  In some cases, "latest" may be behind the version
-           Jenkins wants; if so, comment out the "latest" line, uncomment the line
-           with the numbered WAR version, update to the version Jenkins wants, and
-           rebuild.
+           Then run 'build_image'.
 
 4. Once it completes rebuilding the Docker image with the updated Jenkins WAR file, restart
    the jenkins docker image.  It would be best to wait until the current build is 
@@ -86,5 +83,5 @@ that the version of Jenkins is out of date.  To update Jenkins, follow this proc
     `sudo systemctl restart jenkins-docker.service`
 
    This will take a few moments to complete.
-7. Verify that Jenkins was updated:  Refresh your Jenkins web session and verify that the 
+5. Verify that Jenkins was updated:  Refresh your Jenkins web session and verify that the 
    warning message is gone.
