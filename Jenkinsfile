@@ -1,5 +1,10 @@
 pipeline {
   agent any
+	
+  options {
+      timeout(time: 3, unit: 'HOURS')   // timeout on whole pipeline job
+  }
+	
   stages {
     stage('Start tests') {
       steps {
