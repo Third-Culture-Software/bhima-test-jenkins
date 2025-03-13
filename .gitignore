@@ -4,3 +4,5 @@
 *.jks
 *~
 backups
+
+jenkins.toml
